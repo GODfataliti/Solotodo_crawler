@@ -16,8 +16,12 @@ NEWSPIDER_MODULE = 'Solotodo.spiders'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'Solotodo (+http://www.yourdomain.com)'
 
+ITEM_PIPELINES = {'Solotodo.pipelines.NotebooksPipeline': 300}
+
+
+
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
