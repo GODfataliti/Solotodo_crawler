@@ -11,7 +11,7 @@ URL = 'https://www.solotodo.cl/notebooks?score_games_start=440'
 DOMAIN = 'https://www.solotodo.cl/'
 
 
-class SolotodoSpider(scrapy.Spider):
+class SolotodoSpider(CrawlSpider):
 	name='solotodo'
 
 
@@ -35,7 +35,7 @@ class SolotodoSpider(scrapy.Spider):
 		db_item['ram'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[2]//text())').get()
 		db_item['tarj_video'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[6]//text())').get()
 		db_item['procesador'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[1]/a//text())').get()
-		db_item['almacenamiento'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[5]//text())')
+		db_item['almacenamiento'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[5]//text())').get()
 		db_item['url'] = response.url
 
 		self.item_count+=1
