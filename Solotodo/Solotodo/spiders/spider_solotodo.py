@@ -31,16 +31,16 @@ class SolotodoSpider(CrawlSpider):
 		db_item = SolotodoItem()
 
 		db_item['titulo'] = response.xpath('normalize-space(//div/h1[@class="mb-0"]/text())').get()
-		db_item['precio'] = response.xpath('normalize-space(//div[@id="product-prices-table"]/table/tbody/tr[1]/td[4]//text())').get()
+		db_item['precio'] = response.xpath('normalize-space(//div[@id="product-prices-table"]/table/tbody/tr[1]/td[4]/a//text())').get()
 		db_item['ram'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[2]//text())').get()
-		db_item['tarj_video'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[6]//text())').get()
+		db_item['tarj_video'] = response.xpath('//*[@id="technical-specifications-container"]/div/div[1]/dl/dd[6]/ul/li/a//text()').get()
 		db_item['procesador'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[1]/a//text())').get()
-		db_item['almacenamiento'] = response.xpath('normalize-space(//div[@id="technical-specifications-container"]/div/div[1]/dl/dd[5]//text())').get()
+		db_item['almacenamiento'] = response.xpath('normalize-space(//*[@id="technical-specifications-container"]/div/div[1]/dl/dd[5]/ul/li//text())').get()
 		db_item['url'] = response.url
 
 		self.item_count+=1
 
-		if self.item_count>40:
+		if self.item_count>15:
 			raise CloseSpider('item_exceeded')
 
 		yield db_item

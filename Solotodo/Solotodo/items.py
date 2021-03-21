@@ -18,4 +18,4 @@ class SolotodoItem(Item):
     almacenamiento = Field()
     url = Field()
 
-    pass
+    #pass
