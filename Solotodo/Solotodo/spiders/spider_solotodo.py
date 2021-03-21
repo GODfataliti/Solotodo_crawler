@@ -40,7 +40,7 @@ class SolotodoSpider(CrawlSpider):
 
 		self.item_count+=1
 
-		if self.item_count>10:
+		if self.item_count>40:
 			raise CloseSpider('item_exceeded')
 
 		yield db_item
